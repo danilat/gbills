@@ -13,4 +13,13 @@ class Client {
 	String phone
 	String email
 	String web
+	String observations
+	
+	static mapping = {
+		columns {
+			observations type:'text'
+		}
+	}
+
+	
 }

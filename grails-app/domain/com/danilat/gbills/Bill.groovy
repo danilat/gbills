@@ -10,6 +10,13 @@ class Bill {
 	Integer retention
 	Float total
 	String state
+	String observations
+	
+	static mapping = {
+		columns {
+			observations type:'text'
+		}
+	}
 	
 	static final DRAFT = 'DRAFT'
 	static final CANCELED = 'CANCELED'
