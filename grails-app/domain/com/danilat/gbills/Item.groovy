@@ -1,7 +1,7 @@
 package com.danilat.gbills
 
 class Item {
-	static belongsTo = [bill:Bill]
+	Bill bill
 	String description
 	Float price
 }

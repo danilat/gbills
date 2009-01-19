@@ -10,7 +10,8 @@
 		<h1>gBills</h1>
 		<div class="nav">
             <span class="menuButton"><a class="home" href="${createLinkTo(dir:'')}">Inicio</a></span>
-            <span class="menuButton"><g:link controller="cliente">Clientes</g:link></span>
+            <span class="menuButton"><g:link controller="client">Clientes</g:link></span>
+            <span class="menuButton"><g:link controller="bill">Facturas</g:link></span>
         </div>       	
         <g:layoutBody />		
     </body>	

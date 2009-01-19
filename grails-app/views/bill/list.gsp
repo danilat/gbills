@@ -27,9 +27,9 @@
                    	    
                    	        <g:sortableColumn property="date" title="Date" titleKey="bill.date" />
                         
-                   	        <g:sortableColumn property="observations" title="Observations" titleKey="bill.observations" />
+                   	        <g:sortableColumn property="observations" title="Taxable" titleKey="bill.taxable" />
                         
-                   	        <g:sortableColumn property="retention" title="Retention" titleKey="bill.retention" />
+                   	        <g:sortableColumn property="retention" title="Total" titleKey="bill.total" />
                         
                    	        <g:sortableColumn property="state" title="State" titleKey="bill.state" />
                         
@@ -41,16 +41,16 @@
                         
                             <td><g:link action="show" id="${billInstance.id}">${fieldValue(bean:billInstance, field:'id')}</g:link></td>
                         
-                            <td>${fieldValue(bean:billInstance, field:'client')}</td>
+                            <td>${billInstance.client.name}</td>
                         
                             <td>${fieldValue(bean:billInstance, field:'date')}</td>
                         
-                            <td>${fieldValue(bean:billInstance, field:'observations')}</td>
+                            <td>${fieldValue(bean:billInstance, field:'taxable')}</td>
                         
-                            <td>${fieldValue(bean:billInstance, field:'retention')}</td>
+                            <td>${fieldValue(bean:billInstance, field:'total')}</td>
                         
                             <td>${fieldValue(bean:billInstance, field:'state')}</td>
-                        
+                        	
                         </tr>
                     </g:each>
                     </tbody>

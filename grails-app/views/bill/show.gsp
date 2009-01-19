@@ -31,72 +31,59 @@
                         <tr class="prop">
                             <td valign="top" class="name"><g:message code="bill.client" default="Client" />:</td>
                             
-                            <td valign="top" class="value"><g:link controller="client" action="show" id="${billInstance?.client?.id}">${billInstance?.client?.encodeAsHTML()}</g:link></td>
+                            <td valign="top" class="value"><g:link controller="client" action="show" id="${billInstance?.client?.id}">${billInstance.client.name.encodeAsHTML()}</g:link></td>
                             
                         </tr>
-                    
                         <tr class="prop">
                             <td valign="top" class="name"><g:message code="bill.date" default="Date" />:</td>
-                            
                             <td valign="top" class="value">${fieldValue(bean:billInstance, field:'date')}</td>
-                            
                         </tr>
-                    
+                        <tr class="prop">
+                            <td valign="top" class="name"><g:message code="bill.state" default="State" />:</td>
+                            <td valign="top" class="value">${fieldValue(bean:billInstance, field:'state')}</td>
+                        </tr>
+                        <tr class="prop">
+                            <td valign="top" class="name"><g:message code="bill.taxable" default="Taxable" />:</td>
+                            <td valign="top" class="value">${fieldValue(bean:billInstance, field:'taxable')}€</td>
+                        </tr>
+                        <tr class="prop">
+                            <td valign="top" class="name"><g:message code="bill.retention" default="Retention" />:</td>
+                            <td valign="top" class="value">${fieldValue(bean:billInstance, field:'retention')}%</td>
+                        </tr>
+                        <tr class="prop">
+                            <td valign="top" class="name"><g:message code="bill.retention.price" default="Retention price" />:</td>
+                            <g:set var="retentionPrice" value="${billInstance.retention*billInstance.taxable/100}"/>
+                            <td valign="top" class="value">${retentionPrice}€</td>
+                        </tr>
+                    	<tr class="prop">
+                            <td valign="top" class="name"><g:message code="bill.vat" default="Vat" />:</td>
+                            <td valign="top" class="value">${fieldValue(bean:billInstance, field:'vat')}%</td>
+                        </tr>
+                        <tr class="prop">
+                            <td valign="top" class="name"><g:message code="bill.vat.price" default="vat price" />:</td>
+                            <g:set var="vatPrice" value="${billInstance.vat*billInstance.taxable/100}"/>
+                            <td valign="top" class="value">${vatPrice}€</td>
+                        </tr>
+                        <tr class="prop">
+                            <td valign="top" class="name"><g:message code="bill.total" default="Total" />:</td>
+                            <td valign="top" class="value">${fieldValue(bean:billInstance, field:'total')}€</td>
+                        </tr>
+                    	<tr class="prop">
+                            <td valign="top" class="name"><g:message code="bill.observations" default="Observations" />:</td>
+                            <td valign="top" class="value">${fieldValue(bean:billInstance, field:'observations')}</td>
+                        </tr>
                         <tr class="prop">
                             <td valign="top" class="name"><g:message code="bill.items" default="Items" />:</td>
                             
                             <td  valign="top" style="text-align:left;" class="value">
                                 <ul>
                                 <g:each var="i" in="${billInstance.items}">
-                                    <li><g:link controller="item" action="show" id="${i.id}">${i.encodeAsHTML()}</g:link></li>
+                                    <li><g:link controller="item" action="show" id="${i.id}">${i.description.encodeAsHTML()} ${i.price}€</g:link></li>
                                 </g:each>
                                 </ul>
                             </td>
                             
                         </tr>
-                    
-                        <tr class="prop">
-                            <td valign="top" class="name"><g:message code="bill.observations" default="Observations" />:</td>
-                            
-                            <td valign="top" class="value">${fieldValue(bean:billInstance, field:'observations')}</td>
-                            
-                        </tr>
-                    
-                        <tr class="prop">
-                            <td valign="top" class="name"><g:message code="bill.retention" default="Retention" />:</td>
-                            
-                            <td valign="top" class="value">${fieldValue(bean:billInstance, field:'retention')}</td>
-                            
-                        </tr>
-                    
-                        <tr class="prop">
-                            <td valign="top" class="name"><g:message code="bill.state" default="State" />:</td>
-                            
-                            <td valign="top" class="value">${fieldValue(bean:billInstance, field:'state')}</td>
-                            
-                        </tr>
-                    
-                        <tr class="prop">
-                            <td valign="top" class="name"><g:message code="bill.taxable" default="Taxable" />:</td>
-                            
-                            <td valign="top" class="value">${fieldValue(bean:billInstance, field:'taxable')}</td>
-                            
-                        </tr>
-                    
-                        <tr class="prop">
-                            <td valign="top" class="name"><g:message code="bill.total" default="Total" />:</td>
-                            
-                            <td valign="top" class="value">${fieldValue(bean:billInstance, field:'total')}</td>
-                            
-                        </tr>
-                    
-                        <tr class="prop">
-                            <td valign="top" class="name"><g:message code="bill.vat" default="Vat" />:</td>
-                            
-                            <td valign="top" class="value">${fieldValue(bean:billInstance, field:'vat')}</td>
-                            
-                        </tr>
-                    
                     </tbody>
                 </table>
             </div>

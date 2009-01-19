@@ -32,7 +32,7 @@
                    	        <g:sortableColumn property="email" title="Email" titleKey="client.email" />
                         
                    	        <g:sortableColumn property="name" title="Name" titleKey="client.name" />
-                        
+                        	<th>acciones</th>
                         </tr>
                     </thead>
                     <tbody>
@@ -41,16 +41,17 @@
                         
                             <td><g:link action="show" id="${clientInstance.id}">${fieldValue(bean:clientInstance, field:'id')}</g:link></td>
                         
-                            <td>${fieldValue(bean:clientInstance, field:'address')}</td>
+                            <td><g:link action="show" id="${clientInstance.id}">${fieldValue(bean:clientInstance, field:'address')}</g:link></td>
                         
-                            <td>${fieldValue(bean:clientInstance, field:'city')}</td>
+                            <td><g:link action="show" id="${clientInstance.id}">${fieldValue(bean:clientInstance, field:'city')}</g:link></td>
                         
-                            <td>${fieldValue(bean:clientInstance, field:'contactPerson')}</td>
+                            <td><g:link action="show" id="${clientInstance.id}">${fieldValue(bean:clientInstance, field:'contactPerson')}</g:link></td>
                         
-                            <td>${fieldValue(bean:clientInstance, field:'email')}</td>
+                            <td><g:link action="show" id="${clientInstance.id}">${fieldValue(bean:clientInstance, field:'email')}</g:link></td>
                         
-                            <td>${fieldValue(bean:clientInstance, field:'name')}</td>
-                        
+                            <td><g:link action="show" id="${clientInstance.id}">${fieldValue(bean:clientInstance, field:'name')}</g:link></td>
+                        	
+                        	<td><g:link controller="bill" params="['client':clientInstance.id]" action="list">ver facturas</g:link> | <g:link controller="bill" params="['client.id':clientInstance?.id]" action="create">Nueva factura</g:link></td>
                         </tr>
                     </g:each>
                     </tbody>

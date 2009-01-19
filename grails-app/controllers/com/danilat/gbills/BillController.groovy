@@ -1,7 +1,8 @@
 package com.danilat.gbills
 
 class BillController {
-    
+	def billService
+	
     def index = { redirect(action:list,params:params) }
 
     // the delete, save and update actions only accept POST requests
@@ -9,7 +10,13 @@ class BillController {
 
     def list = {
         if(!params.max) params.max = 10
-        [ billInstanceList: Bill.list( params ) ]
+        if(params.client){
+        	def client = Client.get(params.client)
+        	return [ billInstanceList: Bill.findAllByClient(client, params ), client: client ]
+        }else{
+        	println "aaaaaaaaaaaaaa"
+        	return [ billInstanceList: Bill.list( params ) ]
+        }
     }
 
     def show = {
@@ -58,6 +65,7 @@ class BillController {
     def update = {
         def billInstance = Bill.get( params.id )
         if(billInstance) {
+        	billService.populateBill(bill)
             billInstance.properties = params
             if(!billInstance.hasErrors() && billInstance.save()) {
                 flash.message = "bill.updated"
@@ -89,7 +97,7 @@ class BillController {
             flash.message = "bill.created"
             flash.args = ["${billInstance.id}"]
             flash.defaultMessage = "Bill ${billInstance.id} created"
-            redirect(action:show,id:billInstance.id)
+            redirect(action:edit,id:billInstance.id)
         }
         else {
             render(view:'create',model:[billInstance:billInstance])

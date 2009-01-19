@@ -5,12 +5,12 @@ class Bill {
 	static hasMany = [items:Item]
 	
 	Date date = new Date()
-	Float taxable
-	Integer vat
-	Integer retention
-	Float total
-	String state
-	String observations
+	Float taxable = 0
+	Integer vat = 16
+	Integer retention = 7
+	Float total = 0
+	String state = DRAFT
+	String observations = ""
 	
 	static mapping = {
 		columns {
@@ -18,8 +18,9 @@ class Bill {
 		}
 	}
 	
-	static final DRAFT = 'DRAFT'
-	static final CANCELED = 'CANCELED'
-	static final COMPLETED = 'COMPLETED'
-	static final STATE = [DRAFT, CANCELED, COMPLETED]
+	public static final DRAFT = 'DRAFT'
+	public static final CANCELED = 'CANCELED'
+	public static final COMPLETED = 'COMPLETED'
+	public static final PAYED = 'PAYED'
+	public static final STATES = [DRAFT, CANCELED, COMPLETED, PAYED]
 }

@@ -8,9 +8,9 @@
     </head>
     <body>
         <div class="nav">
-            <span class="menuButton"><a class="home" href="${createLinkTo(dir:'')}"><g:message code="home" default="Home" /></a></span>
             <span class="menuButton"><g:link class="list" action="list"><g:message code="client.list" default="Client List" /></g:link></span>
             <span class="menuButton"><g:link class="create" action="create"><g:message code="client.new" default="New Client" /></g:link></span>
+            <span class="menuButton"><g:link controller="bill" params="['client.id':clientInstance?.id]" action="create">Nueva factura</g:link></span>
         </div>
         <div class="body">
             <h1><g:message code="client.show" default="Show Client" /></h1>
@@ -23,21 +23,55 @@
                     
                         <tr class="prop">
                             <td valign="top" class="name"><g:message code="client.id" default="Id" />:</td>
-                            
                             <td valign="top" class="value">${fieldValue(bean:clientInstance, field:'id')}</td>
-                            
                         </tr>
-                    
+                        
+                        <tr class="prop">
+                            <td valign="top" class="name"><g:message code="client.name" default="Name" />:</td>
+                            <td valign="top" class="value">${fieldValue(bean:clientInstance, field:'name')}</td>
+                        </tr>
+                        <tr class="prop">
+                            <td valign="top" class="name"><g:message code="client.nif" default="Nif" />:</td>
+                            <td valign="top" class="value">${fieldValue(bean:clientInstance, field:'nif')}</td>
+                        </tr>
                         <tr class="prop">
                             <td valign="top" class="name"><g:message code="client.address" default="Address" />:</td>
-                            
                             <td valign="top" class="value">${fieldValue(bean:clientInstance, field:'address')}</td>
-                            
                         </tr>
-                    
+                        <tr class="prop">
+                            <td valign="top" class="name"><g:message code="client.city" default="City" />:</td>
+                            <td valign="top" class="value">${fieldValue(bean:clientInstance, field:'city')}</td>
+                        </tr>
+                        <tr class="prop">
+                            <td valign="top" class="name"><g:message code="client.province" default="Province" />:</td>
+                            <td valign="top" class="value">${fieldValue(bean:clientInstance, field:'province')}</td>
+                        </tr>
+                        <tr class="prop">
+                            <td valign="top" class="name"><g:message code="client.zip" default="Zip" />:</td>
+                            <td valign="top" class="value">${fieldValue(bean:clientInstance, field:'zip')}</td>
+                        </tr>
+                        <tr class="prop">
+                            <td valign="top" class="name"><g:message code="client.email" default="Email" />:</td>
+                            <td valign="top" class="value">${fieldValue(bean:clientInstance, field:'email')}</td>
+                        </tr>
+                        <tr class="prop">
+                            <td valign="top" class="name"><g:message code="client.phone" default="Phone" />:</td>
+                            <td valign="top" class="value">${fieldValue(bean:clientInstance, field:'phone')}</td>
+                        </tr>
+                        <tr class="prop">
+                            <td valign="top" class="name"><g:message code="client.web" default="Web" />:</td>
+                            <td valign="top" class="value">${fieldValue(bean:clientInstance, field:'web')}</td>
+                        </tr>
+                    	<tr class="prop">
+                            <td valign="top" class="name"><g:message code="client.contactPerson" default="Contact Person" />:</td>
+                            <td valign="top" class="value">${fieldValue(bean:clientInstance, field:'contactPerson')}</td>
+                        </tr>
+                        <tr class="prop">
+                            <td valign="top" class="name"><g:message code="client.observations" default="Observations" />:</td>
+                            <td valign="top" class="value">${fieldValue(bean:clientInstance, field:'observations')}</td>
+                        </tr>
                         <tr class="prop">
                             <td valign="top" class="name"><g:message code="client.bills" default="Bills" />:</td>
-                            
                             <td  valign="top" style="text-align:left;" class="value">
                                 <ul>
                                 <g:each var="b" in="${clientInstance.bills}">
@@ -48,9 +82,8 @@
                             
                         </tr>
                     
-                        <tr class="prop">
+                        <!--tr class="prop">
                             <td valign="top" class="name"><g:message code="client.budgets" default="Budgets" />:</td>
-                            
                             <td  valign="top" style="text-align:left;" class="value">
                                 <ul>
                                 <g:each var="b" in="${clientInstance.budgets}">
@@ -59,86 +92,15 @@
                                 </ul>
                             </td>
                             
-                        </tr>
-                    
-                        <tr class="prop">
-                            <td valign="top" class="name"><g:message code="client.city" default="City" />:</td>
-                            
-                            <td valign="top" class="value">${fieldValue(bean:clientInstance, field:'city')}</td>
-                            
-                        </tr>
-                    
-                        <tr class="prop">
-                            <td valign="top" class="name"><g:message code="client.contactPerson" default="Contact Person" />:</td>
-                            
-                            <td valign="top" class="value">${fieldValue(bean:clientInstance, field:'contactPerson')}</td>
-                            
-                        </tr>
-                    
-                        <tr class="prop">
-                            <td valign="top" class="name"><g:message code="client.email" default="Email" />:</td>
-                            
-                            <td valign="top" class="value">${fieldValue(bean:clientInstance, field:'email')}</td>
-                            
-                        </tr>
-                    
-                        <tr class="prop">
-                            <td valign="top" class="name"><g:message code="client.name" default="Name" />:</td>
-                            
-                            <td valign="top" class="value">${fieldValue(bean:clientInstance, field:'name')}</td>
-                            
-                        </tr>
-                    
-                        <tr class="prop">
-                            <td valign="top" class="name"><g:message code="client.nif" default="Nif" />:</td>
-                            
-                            <td valign="top" class="value">${fieldValue(bean:clientInstance, field:'nif')}</td>
-                            
-                        </tr>
-                    
-                        <tr class="prop">
-                            <td valign="top" class="name"><g:message code="client.observations" default="Observations" />:</td>
-                            
-                            <td valign="top" class="value">${fieldValue(bean:clientInstance, field:'observations')}</td>
-                            
-                        </tr>
-                    
-                        <tr class="prop">
-                            <td valign="top" class="name"><g:message code="client.phone" default="Phone" />:</td>
-                            
-                            <td valign="top" class="value">${fieldValue(bean:clientInstance, field:'phone')}</td>
-                            
-                        </tr>
-                    
-                        <tr class="prop">
-                            <td valign="top" class="name"><g:message code="client.province" default="Province" />:</td>
-                            
-                            <td valign="top" class="value">${fieldValue(bean:clientInstance, field:'province')}</td>
-                            
-                        </tr>
-                    
-                        <tr class="prop">
-                            <td valign="top" class="name"><g:message code="client.web" default="Web" />:</td>
-                            
-                            <td valign="top" class="value">${fieldValue(bean:clientInstance, field:'web')}</td>
-                            
-                        </tr>
-                    
-                        <tr class="prop">
-                            <td valign="top" class="name"><g:message code="client.zip" default="Zip" />:</td>
-                            
-                            <td valign="top" class="value">${fieldValue(bean:clientInstance, field:'zip')}</td>
-                            
-                        </tr>
+                        </tr-->
                     
                     </tbody>
                 </table>
             </div>
             <div class="buttons">
-                <g:form>
+                <g:form method="get">
                     <input type="hidden" name="id" value="${clientInstance?.id}" />
                     <span class="button"><g:actionSubmit class="edit" action="Edit" value="${message(code:'edit', 'default':'Edit')}" /></span>
-                    <span class="button"><g:actionSubmit class="delete" onclick="return confirm('${message(code:'delete.confirm', 'default':'Are you sure?')}');" action="Delete" value="${message(code:'delete', 'default':'Delete')}" /></span>
                 </g:form>
             </div>
         </div>
