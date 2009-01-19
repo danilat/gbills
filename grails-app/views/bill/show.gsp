@@ -44,7 +44,7 @@
                         </tr>
                         <tr class="prop">
                             <td valign="top" class="name"><g:message code="bill.taxable" default="Taxable" />:</td>
-                            <td valign="top" class="value">${fieldValue(bean:billInstance, field:'taxable')}€</td>
+                            <td valign="top" class="value">${fieldValue(bean:billInstance, field:'taxable')}</td>
                         </tr>
                         <tr class="prop">
                             <td valign="top" class="name"><g:message code="bill.retention" default="Retention" />:</td>
@@ -78,7 +78,7 @@
                             <td  valign="top" style="text-align:left;" class="value">
                                 <ul>
                                 <g:each var="i" in="${billInstance.items}">
-                                    <li><g:link controller="item" action="show" id="${i.id}">${i.description.encodeAsHTML()} ${i.price}€</g:link></li>
+                                    <li>${i.description.encodeAsHTML()} ${i.price}€</li>
                                 </g:each>
                                 </ul>
                             </td>
@@ -91,7 +91,6 @@
                 <g:form>
                     <input type="hidden" name="id" value="${billInstance?.id}" />
                     <span class="button"><g:actionSubmit class="edit" action="Edit" value="${message(code:'edit', 'default':'Edit')}" /></span>
-                    <span class="button"><g:actionSubmit class="delete" onclick="return confirm('${message(code:'delete.confirm', 'default':'Are you sure?')}');" action="Delete" value="${message(code:'delete', 'default':'Delete')}" /></span>
                 </g:form>
             </div>
         </div>

@@ -65,7 +65,7 @@ class BillController {
     def update = {
         def billInstance = Bill.get( params.id )
         if(billInstance) {
-        	billService.populateBill(bill)
+        	billService.populateBill(billInstance)
             billInstance.properties = params
             if(!billInstance.hasErrors() && billInstance.save()) {
                 flash.message = "bill.updated"

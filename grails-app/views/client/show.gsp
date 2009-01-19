@@ -10,6 +10,7 @@
         <div class="nav">
             <span class="menuButton"><g:link class="list" action="list"><g:message code="client.list" default="Client List" /></g:link></span>
             <span class="menuButton"><g:link class="create" action="create"><g:message code="client.new" default="New Client" /></g:link></span>
+            <span class="menuButton"><g:link controller="bill" params="['client':clientInstance?.id]" action="list">Ver facturas</g:link></span>
             <span class="menuButton"><g:link controller="bill" params="['client.id':clientInstance?.id]" action="create">Nueva factura</g:link></span>
         </div>
         <div class="body">
@@ -70,30 +71,6 @@
                             <td valign="top" class="name"><g:message code="client.observations" default="Observations" />:</td>
                             <td valign="top" class="value">${fieldValue(bean:clientInstance, field:'observations')}</td>
                         </tr>
-                        <tr class="prop">
-                            <td valign="top" class="name"><g:message code="client.bills" default="Bills" />:</td>
-                            <td  valign="top" style="text-align:left;" class="value">
-                                <ul>
-                                <g:each var="b" in="${clientInstance.bills}">
-                                    <li><g:link controller="bill" action="show" id="${b.id}">${b.encodeAsHTML()}</g:link></li>
-                                </g:each>
-                                </ul>
-                            </td>
-                            
-                        </tr>
-                    
-                        <!--tr class="prop">
-                            <td valign="top" class="name"><g:message code="client.budgets" default="Budgets" />:</td>
-                            <td  valign="top" style="text-align:left;" class="value">
-                                <ul>
-                                <g:each var="b" in="${clientInstance.budgets}">
-                                    <li><g:link controller="budget" action="show" id="${b.id}">${b.encodeAsHTML()}</g:link></li>
-                                </g:each>
-                                </ul>
-                            </td>
-                            
-                        </tr-->
-                    
                     </tbody>
                 </table>
             </div>

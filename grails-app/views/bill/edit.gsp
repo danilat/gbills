@@ -26,7 +26,7 @@
         	<g:render template="/item/list" model="['bill':billInstance]"/>
         	</div>
         	<br/>
-            <g:form method="post" >
+            <g:form method="post" action="update">
                 <input type="hidden" name="id" value="${billInstance?.id}" />
                 <g:render template="form"/>
             </g:form>
